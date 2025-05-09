@@ -36,7 +36,7 @@ const Login = () => {
           </p>
           <span className="text-sm mt-2 text-ascent-2">Welcome back</span>
 
-          <form className="py-8 flex flex-col gap-5'onSubmit={handleSubmit(onSubmit)}">
+         <form className="py-8 flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             <TextInput
               name="email"
               placeholder="email@example.com"
@@ -85,7 +85,7 @@ const Login = () => {
             ) : (
               <CustomButton
                 type='submit'
-                containerStyles={`inline-flex justify-center rounded-md bg-blue px-8 py-3 text-sm font-medium text-white outline-none`}
+                containerStyles={`inline-flex justify-center rounded-md bg-[#065ad8]  px-8 py-3 text-sm font-medium text-white outline-none`}
                 title='Login'
               />
             )}

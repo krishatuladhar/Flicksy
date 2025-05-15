@@ -1,6 +1,8 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -37,6 +39,7 @@ export const register = async (req, res, next) => {
 
 // Login
 export const login = async (req, res, next) => {
+  
   const { username, password } = req.body;
 
   if (!username || !password) return next("All fields are required");

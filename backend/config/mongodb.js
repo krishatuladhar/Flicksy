@@ -3,9 +3,7 @@ import mongoose from "mongoose";
 const dbConnection = async () => {
   try {
     const connection = await mongoose.connect(process.env.MONGODB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      dbName: "weaveworks",
+      dbName: "flicksyworks",
     });
 
     console.log("Database connected");
@@ -15,4 +13,4 @@ const dbConnection = async () => {
   }
 };
 
-export default connectDB;
+export default dbConnection;

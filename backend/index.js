@@ -9,6 +9,7 @@ import bodyParser from "body-parser";
 import helmet from 'helmet';
 import dbConnection from './config/mongodb.js';
 import errorMiddleware from './middleware/errorMiddleware.js';
+import router from './routes/index.js';
 
 dotenv.config();
 
@@ -25,7 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 app.use(router);
-
 
 //error middleware
 app.use(errorMiddleware)

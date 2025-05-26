@@ -7,7 +7,9 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8800";
 export const API = axios.create({
   baseURL: API_URL,
   responseType: "json",
+  withCredentials: true, 
 });
+
 
 export const apiRequest = async ({ url, token, method, data }) => {
   try {

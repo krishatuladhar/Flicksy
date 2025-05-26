@@ -16,8 +16,6 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "views/build")));
-
 const PORT = 8800;
 
 dbConnection();
@@ -33,20 +31,21 @@ const allowedOrigins = [
   "https://flicksy-sigma.vercel.app",
   "http://localhost:8800"
 ];
-
+app.options("*", cors()); // Allow preflight for all routes
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  }
+  origin: ["https://flicksy-sigma.vercel.app"],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 
+
 app.use(morgan("dev"));
+
+app.get('/', (req, res) => {
+  res.send('Backend API is running');
+});
 app.use(router);
 
 //error middleware
@@ -56,6 +55,3 @@ app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
 });
 
-app.get('/', (req, res) => {
-  res.send('Backend API is running');
-});

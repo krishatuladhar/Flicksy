@@ -15,6 +15,7 @@ function Layout() {
 
 function App() {
   const { theme } = useSelector((state) => state.theme);
+  console.log("API base URL:", API_URL);
 
   return (
     <div data-theme={theme} className='w-full min-h-[100vh]'>

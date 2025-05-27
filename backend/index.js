@@ -33,13 +33,9 @@ const allowedOrigins = [
 ];
 app.options("*", cors()); // Allow preflight for all routes
 app.use(cors({
-  origin: ["flicksy-jade.vercel.app"],
+  origin: "https://flicksy-jade.vercel.app", // ✅ your Vercel frontend URL
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
 }));
-
-
 
 app.use(morgan("dev"));
 

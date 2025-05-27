@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SetPosts } from "../redux/postSlice";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8800";
+const API_URL = import.meta.env.VITE_API_URL || "https://flicksy-9jb7.onrender.com";
 
 
 export const API = axios.create({

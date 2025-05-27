@@ -26,14 +26,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-
 const allowedOrigins = [
   "https://flicksy-sigma.vercel.app",
-  "http://localhost:8800"
+  "https://flicksy-jade.vercel.app",
+  "http://localhost:3000"
 ];
-app.options("*", cors()); // Allow preflight for all routes
+
 app.use(cors({
-  origin: "https://flicksy-jade.vercel.app", // ✅ your Vercel frontend URL
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 

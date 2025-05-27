@@ -205,3 +205,4 @@ export const viewUserProfile = async (token, id) => {
     console.error("Error viewing user profile:", error);
   }
 };
+export { API_URL };
